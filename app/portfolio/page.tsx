@@ -85,19 +85,25 @@ export default function PortfolioPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white py-20">
-            <div className="container mx-auto px-4">
-                {/* Hero Section */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                        Our Success Stories
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Discover how we've helped businesses across industries achieve digital transformation and drive growth.
-                    </p>
-                </div>
+        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
+            {/* Hero Section */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+                <div className="container mx-auto px-4">
 
-                {/* Projects Grid */}
+                    <div className="text-center mb-16">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                            Our Success Stories
+                        </h1>
+                        <p className="text-xl text-white max-w-3xl mx-auto">
+                            Discover how we've helped businesses across industries achieve digital transformation and drive growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Projects Grid */}
+            <div className="container mx-auto px-4">
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
