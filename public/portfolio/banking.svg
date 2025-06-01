@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="300" fill="#f0f9ff"/>
+    <!-- Bank building shape -->
+    <path d="M100 100 L300 100 L200 50 Z" fill="#2563eb"/>
+    <rect x="120" y="100" width="160" height="120" fill="#2563eb"/>
+    <!-- Columns -->
+    <rect x="140" y="110" width="20" height="110" fill="#ffffff"/>
+    <rect x="190" y="110" width="20" height="110" fill="#ffffff"/>
+    <rect x="240" y="110" width="20" height="110" fill="#ffffff"/>
+    <!-- Steps -->
+    <rect x="100" y="220" width="200" height="10" fill="#2563eb"/>
+    <rect x="90" y="230" width="220" height="10" fill="#2563eb"/>
+    <rect x="80" y="240" width="240" height="10" fill="#2563eb"/>
+</svg> 
