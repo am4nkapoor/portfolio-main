@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" fill="#f0f9ff"/>
-    <!-- Contact cards -->
-    <rect x="50" y="50" width="140" height="80" rx="8" fill="#2563eb" fill-opacity="0.1"/>
-    <rect x="210" y="50" width="140" height="80" rx="8" fill="#2563eb" fill-opacity="0.1"/>
-    <rect x="50" y="150" width="140" height="80" rx="8" fill="#2563eb" fill-opacity="0.1"/>
-    <rect x="210" y="150" width="140" height="80" rx="8" fill="#2563eb" fill-opacity="0.1"/>
-    <!-- Icons -->
-    <circle cx="80" cy="80" r="15" fill="#2563eb"/>
-    <circle cx="240" cy="80" r="15" fill="#2563eb"/>
-    <circle cx="80" cy="180" r="15" fill="#2563eb"/>
-    <circle cx="240" cy="180" r="15" fill="#2563eb"/>
-</svg> 
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="none"><path fill="#f0f9ff" d="M0 0h400v300H0z"/><rect width="140" height="80" x="50" y="50" fill="#2563eb" fill-opacity=".1" rx="8"/><rect width="140" height="80" x="210" y="50" fill="#2563eb" fill-opacity=".1" rx="8"/><rect width="140" height="80" x="50" y="150" fill="#2563eb" fill-opacity=".1" rx="8"/><rect width="140" height="80" x="210" y="150" fill="#2563eb" fill-opacity=".1" rx="8"/><circle cx="80" cy="80" r="15" fill="#2563eb"/><circle cx="240" cy="80" r="15" fill="#2563eb"/><circle cx="80" cy="180" r="15" fill="#2563eb"/><circle cx="240" cy="180" r="15" fill="#2563eb"/></svg>

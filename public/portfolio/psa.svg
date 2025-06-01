@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="300" fill="#f0f9ff"/>
-    <!-- Calendar/timeline representation -->
-    <rect x="50" y="50" width="300" height="200" rx="8" fill="#2563eb" fill-opacity="0.1"/>
-    <!-- Task bars -->
-    <rect x="70" y="80" width="120" height="20" rx="4" fill="#2563eb"/>
-    <rect x="70" y="120" width="200" height="20" rx="4" fill="#2563eb"/>
-    <rect x="70" y="160" width="160" height="20" rx="4" fill="#2563eb"/>
-    <rect x="70" y="200" width="180" height="20" rx="4" fill="#2563eb"/>
-</svg> 
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" fill="none"><path fill="#f0f9ff" d="M0 0h400v300H0z"/><rect width="300" height="200" x="50" y="50" fill="#2563eb" fill-opacity=".1" rx="8"/><rect width="120" height="20" x="70" y="80" fill="#2563eb" rx="4"/><rect width="200" height="20" x="70" y="120" fill="#2563eb" rx="4"/><rect width="160" height="20" x="70" y="160" fill="#2563eb" rx="4"/><rect width="180" height="20" x="70" y="200" fill="#2563eb" rx="4"/></svg>
