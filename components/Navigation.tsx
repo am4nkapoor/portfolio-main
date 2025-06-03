@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,13 +18,25 @@ export function Navigation() {
         { href: "/contact", label: "Contact" }
     ];
 
+    const handleLinkClick = () => {
+        setIsMobileMenuOpen(false);
+    };
+
     return (
         <nav className="fixed w-full bg-black/10 backdrop-blur-md z-50">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/" className="text-white font-bold text-xl">
-                        <img src="/logo/logo.svg" alt="Gemscoder Logo" className="h-8" />
+                    <Link href="/" onClick={handleLinkClick} className="text-white font-bold">
+                        <div className="relative w-[120px] h-[40px]">
+                            <Image
+                                src="/logo/logo.svg"
+                                alt="Gemscoder Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -32,6 +45,7 @@ export function Navigation() {
                             <Link
                                 key={item.href}
                                 href={item.href}
+                                onClick={handleLinkClick}
                                 className="text-white hover:text-gray-300 transition-colors"
                             >
                                 {item.label}
@@ -46,6 +60,7 @@ export function Navigation() {
                     <button
                         className="md:hidden text-white"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle mobile menu"
                     >
                         <svg
                             className="h-6 w-6"
@@ -73,6 +88,7 @@ export function Navigation() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
+                                    onClick={handleLinkClick}
                                     className="block px-3 py-2 text-white hover:bg-gray-700 rounded-md"
                                 >
                                     {item.label}

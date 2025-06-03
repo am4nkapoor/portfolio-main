@@ -1,8 +1,14 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Globe } from "lucide-react";
+import { useState } from "react";
 
 export default function ContactPage() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+
     const offices = [
         {
             country: "United States",
@@ -24,6 +30,51 @@ export default function ContactPage() {
         }
     ];
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...data,
+                    to: 'gemscode@gmail.com'
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message');
+            }
+
+            setSubmitStatus({
+                type: 'success',
+                message: 'Message sent successfully! We will get back to you soon.'
+            });
+            e.currentTarget.reset();
+        } catch (error) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Failed to send message. Please try again later.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white py-20">
             <div className="container mx-auto px-4">
@@ -42,13 +93,20 @@ export default function ContactPage() {
                     <div>
                         <Card className="p-8">
                             <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-                            <form className="space-y-6">
+                            {submitStatus && (
+                                <div className={`p-4 rounded-lg mb-6 ${submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                                    }`}>
+                                    {submitStatus.message}
+                                </div>
+                            )}
+                            <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-2">
                                             First Name
                                         </label>
                                         <input
+                                            name="firstName"
                                             type="text"
                                             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             required
@@ -59,6 +117,7 @@ export default function ContactPage() {
                                             Last Name
                                         </label>
                                         <input
+                                            name="lastName"
                                             type="text"
                                             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                             required
@@ -70,6 +129,7 @@ export default function ContactPage() {
                                         Email
                                     </label>
                                     <input
+                                        name="email"
                                         type="email"
                                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         required
@@ -80,6 +140,7 @@ export default function ContactPage() {
                                         Phone
                                     </label>
                                     <input
+                                        name="phone"
                                         type="tel"
                                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     />
@@ -89,6 +150,7 @@ export default function ContactPage() {
                                         Message
                                     </label>
                                     <textarea
+                                        name="message"
                                         rows={4}
                                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         required
@@ -97,11 +159,22 @@ export default function ContactPage() {
                                 <div className="mt-6">
                                     <Button
                                         type="submit"
-                                        variant="glass"
+                                        variant="premium"
                                         size="lg"
-                                        className="w-full font-semibold"
+                                        className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-3 rounded-lg transition-all duration-200 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                        disabled={isSubmitting}
                                     >
-                                        Send Message
+                                        {isSubmitting ? (
+                                            <div className="flex items-center justify-center">
+                                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Sending...
+                                            </div>
+                                        ) : (
+                                            'Send Message'
+                                        )}
                                     </Button>
                                 </div>
                             </form>
