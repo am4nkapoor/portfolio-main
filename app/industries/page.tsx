@@ -105,34 +105,39 @@ export default function IndustriesPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white py-20">
-            <div className="container mx-auto px-4">
-                {/* Hero Section */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                        Industries We Serve
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        We deliver tailored technology solutions across diverse industries, helping businesses innovate and grow.
-                    </p>
+        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
+            {/* Hero Section */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                            Industries We Serve
+                        </h1>
+                        <p className="text-xl max-w-3xl mx-auto">
+                            We deliver tailored technology solutions across diverse industries, helping businesses innovate and grow.
+                        </p>
+                    </div>
                 </div>
-
-                {/* Industries Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {industries.map((industry, index) => (
-                        <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                            <div className="mb-4">{industry.icon}</div>
-                            <h3 className="text-xl font-bold mb-2">{industry.title}</h3>
-                            <p className="text-gray-600 mb-4">{industry.description}</p>
-                            <ul className="space-y-2">
-                                {industry.solutions.map((solution, idx) => (
-                                    <li key={idx} className="text-gray-700">
-                                        • {solution}
-                                    </li>
-                                ))}
-                            </ul>
-                        </Card>
-                    ))}
+            </div>
+            {/* Industries Grid */}
+            <div className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {industries.map((industry, index) => (
+                            <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+                                <div className="mb-4">{industry.icon}</div>
+                                <h3 className="text-xl font-bold mb-2">{industry.title}</h3>
+                                <p className="text-gray-600 mb-4">{industry.description}</p>
+                                <ul className="space-y-2">
+                                    {industry.solutions.map((solution, idx) => (
+                                        <li key={idx} className="text-gray-700">
+                                            • {solution}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </Card>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

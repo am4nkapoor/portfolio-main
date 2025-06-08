@@ -73,35 +73,41 @@ export default function ServicesPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white py-20">
-            <div className="container mx-auto px-4">
-                {/* Hero Section */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                        Comprehensive IT Services & Solutions
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Transform your business with our cutting-edge technology solutions and expert staffing services.
-                    </p>
+        <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
+            {/* Hero Section */}
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                            Comprehensive IT Services & Solutions
+                        </h1>
+                        <p className="text-xl max-w-3xl mx-auto">
+                            Transform your business with our cutting-edge technology solutions and expert staffing services.
+                        </p>
+                    </div>
                 </div>
+            </div>
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                    {services.map((service, index) => (
-                        <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                            <div className="mb-4">{service.icon}</div>
-                            <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                            <p className="text-gray-600 mb-4">{service.description}</p>
-                            <ul className="space-y-2">
-                                {service.features.map((feature, idx) => (
-                                    <li key={idx} className="flex items-center text-gray-700">
-                                        <ArrowRight className="w-4 h-4 text-blue-600 mr-2" />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </Card>
-                    ))}
+            {/* Services Grid */}
+            <div className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        {services.map((service, index) => (
+                            <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+                                <div className="mb-4">{service.icon}</div>
+                                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                                <p className="text-gray-600 mb-4">{service.description}</p>
+                                <ul className="space-y-2">
+                                    {service.features.map((feature, idx) => (
+                                        <li key={idx} className="flex items-center text-gray-700">
+                                            <ArrowRight className="w-4 h-4 text-blue-600 mr-2" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </Card>
+                        ))}
+                    </div>
                 </div>
 
                 {/* CTA Section */}
@@ -111,6 +117,8 @@ export default function ServicesPage() {
                     </Button>
                 </div>
             </div>
+
+
         </div>
     );
 } 

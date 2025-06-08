@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { TechnologiesSection } from "@/components/sections/TechnologiesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { StatsSection } from "@/components/sections/StatsSection";
+import YouTubeSection from "./components/YouTubeSection";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutSection />
       <TechnologiesSection />
       <StatsSection />
+      <YouTubeSection />
       <TestimonialsSection />
     </main>
   );

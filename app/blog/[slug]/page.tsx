@@ -1,72 +1,96 @@
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import { getBlogPost, getBlogPosts } from "@/lib/strapi";
-import { formatDate } from "@/lib/utils";
+import { blogPosts } from '@/lib/blog-service';
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import ShareButtons from '@/app/components/ShareButtons';
 
-interface Props {
+interface BlogPostPageProps {
   params: {
     slug: string;
   };
 }
 
-export async function generateStaticParams() {
-  const posts = await getBlogPosts();
-  return posts.map((post) => ({
-    slug: post.attributes.slug,
-  }));
-}
-
-export default async function BlogPostPage({ params }: Props) {
-  const post = await getBlogPost(params.slug);
+export default function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  const {
-    attributes: {
-      title,
-      content,
-      publishedAt,
-      coverImage,
-      author,
-    },
-  } = post;
+  const currentUrl = typeof window !== 'undefined'
+    ? window.location.href
+    : `https://yourdomain.com/blog/${params.slug}`;
 
   return (
-    <article className="min-h-screen bg-white py-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8">
-            <Image
-              src={coverImage.data.attributes.url}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden">
-              <Image
-                src={author.data.attributes.avatar.data.attributes.url}
-                alt={author.data.attributes.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <p className="font-medium">{author.data.attributes.name}</p>
-              <p className="text-sm text-gray-500">{formatDate(publishedAt)}</p>
-            </div>
-          </div>
-          <h1 className="text-4xl font-bold mb-8">{title}</h1>
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: content }}
+    <main className="container mx-auto px-4 py-12">
+
+
+      <article className="max-w-4xl mx-auto py-6">
+        <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
           />
         </div>
-      </div>
-    </article>
+
+        <div className="prose prose-lg dark:prose-invert max-w-none">
+          <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+
+          <div className="flex items-center justify-between gap-4 text-gray-600 dark:text-gray-400 mb-8">
+            <div className="flex items-center gap-4">
+              <time dateTime={post.date}>
+                {new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <span>•</span>
+              <span>By {post.author}</span>
+              <span>•</span>
+              <span>{post.readingTime}</span>
+            </div>
+            <ShareButtons
+              url={currentUrl}
+              title={post.title}
+              text={post.shareText}
+            />
+          </div>
+
+          <div className="mt-8">
+            {post.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="mb-4">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <Link
+                href="/blog"
+                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                ← Back to Blog
+              </Link>
+              <ShareButtons
+                url={currentUrl}
+                title={post.title}
+                text={post.shareText}
+              />
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
   );
+}
+
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }));
 } 

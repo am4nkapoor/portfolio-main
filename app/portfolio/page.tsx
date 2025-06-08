@@ -102,57 +102,59 @@ export default function PortfolioPage() {
             </div>
 
             {/* Projects Grid */}
-            <div className="container mx-auto px-4">
+            <div className="py-20 bg-gray-50">
+                <div className="container mx-auto px-4">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
-                        <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                            <div className="mb-4">
-                                <img
-                                    src={`/portfolio/${project.title.toLowerCase().replace(/ /g, '-')}.svg`}
-                                    alt={project.title}
-                                    className="w-full h-48 object-cover rounded-lg mb-4"
-                                />
-                                {project.icon}
-                            </div>
-                            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                            <p className="text-gray-600 mb-2">{project.client}</p>
-                            <p className="text-blue-600 text-sm mb-4">{project.industry}</p>
-                            <p className="text-gray-600 mb-4">{project.description}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {projects.map((project, index) => (
+                            <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+                                <div className="mb-4">
+                                    <img
+                                        src={`/portfolio/${project.title.toLowerCase().replace(/ /g, '-')}.svg`}
+                                        alt={project.title}
+                                        className="w-full h-48 object-cover rounded-lg mb-4"
+                                    />
+                                    {project.icon}
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                <p className="text-gray-600 mb-2">{project.client}</p>
+                                <p className="text-blue-600 text-sm mb-4">{project.industry}</p>
+                                <p className="text-gray-600 mb-4">{project.description}</p>
 
-                            <div className="mb-4">
-                                <h4 className="font-semibold mb-2">Key Impact:</h4>
-                                <ul className="space-y-1">
-                                    {project.impact.map((item, idx) => (
-                                        <li key={idx} className="flex items-center text-gray-600">
-                                            <ArrowRight className="w-4 h-4 text-blue-600 mr-2" />
-                                            {item}
-                                        </li>
+                                <div className="mb-4">
+                                    <h4 className="font-semibold mb-2">Key Impact:</h4>
+                                    <ul className="space-y-1">
+                                        {project.impact.map((item, idx) => (
+                                            <li key={idx} className="flex items-center text-gray-600">
+                                                <ArrowRight className="w-4 h-4 text-blue-600 mr-2" />
+                                                {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tags.map((tag, idx) => (
+                                        <span
+                                            key={idx}
+                                            className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm"
+                                        >
+                                            {tag}
+                                        </span>
                                     ))}
-                                </ul>
-                            </div>
+                                </div>
+                            </Card>
+                        ))}
+                    </div>
 
-                            <div className="flex flex-wrap gap-2">
-                                {project.tags.map((tag, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </Card>
-                    ))}
-                </div>
-
-                {/* CTA Section */}
-                <div className="text-center mt-16">
-                    <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Business?</h2>
-                    <p className="text-gray-600 mb-8">Let's discuss how we can help you achieve similar results.</p>
-                    <Button variant="premium" size="lg" className="font-semibold">
-                        Contact Us Today
-                    </Button>
+                    {/* CTA Section */}
+                    <div className="text-center mt-16">
+                        <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Business?</h2>
+                        <p className="text-gray-600 mb-8">Let's discuss how we can help you achieve similar results.</p>
+                        <Button variant="premium" size="lg" className="font-semibold">
+                            Contact Us Today
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

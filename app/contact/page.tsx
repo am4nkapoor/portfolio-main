@@ -13,20 +13,20 @@ export default function ContactPage() {
         {
             country: "United States",
             address: "41 Flatbush Avenue, Brooklyn, NY 11217",
-            phone: "+1 281-456-4155",
-            email: "us@company.com"
+            phone: "+1 271-456-4157",
+            email: "us@gemscoder.com"
         },
         {
             country: "India",
-            address: "E-138, Sector 63, Noida, Uttar Pradesh - 201301",
-            phone: "+91 888-2709-959",
-            email: "india@company.com"
+            address: "1086-B, Sector 57, Gurgaon, Haryana - 122003",
+            phone: "+91 971-8023-370",
+            email: "india@gemscoder.com"
         },
         {
             country: "UAE",
             address: "Business Center, Oud Metha Office Building, Dubai",
-            phone: "+971 544-794-252",
-            email: "uae@company.com"
+            phone: "+971 545-796-256",
+            email: "uae@gemscoder.com"
         }
     ];
 

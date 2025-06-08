@@ -48,8 +48,8 @@ const HeroSection = () => {
                             <div
                                 key={index}
                                 className={`p-4 rounded-lg transition-all duration-300 cursor-pointer transform hover:scale-105 ${activeFeature === index
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-gray-800/50 text-gray-300 hover:bg-gray-800'
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-gray-800/50 text-gray-300 hover:bg-gray-800'
                                     }`}
                                 onMouseEnter={() => setActiveFeature(index)}
                             >
